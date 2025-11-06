@@ -99,7 +99,7 @@ input:not(input[type="radio"]) {
   background: transparent;
   color: white;
   font-family: "Luxurious Roman", serif; 
-  font-size: 3em;
+  font-size: 2em;
   border-bottom: 1px solid white;
   border-image: linear-gradient(135deg, rgb(219, 15, 15), rgb(127, 15, 219)) 1;
 }
