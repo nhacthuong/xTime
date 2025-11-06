@@ -294,6 +294,9 @@ button:hover {
   button img{
     width: 4.5vh;
   }
+  label{
+    font-size: 0.9em;
+  }
   input:not(input[type="radio"]){
     padding: 0;
     font-size: 1.2em;
