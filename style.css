@@ -84,7 +84,7 @@ label {
   display: block;
   font-family: "Montagu Slab", serif;
   text-align: left;
-  font-size: 1.3em;
+  font-size: 1.1em;
 }
 
 input:not(input[type="radio"]) { 
