@@ -1,17 +1,6 @@
 // const url_bg_img='https://script.google.com/macros/s/AKfycbypkVn2OKUSxc9679YDerWxFtpRyNnLeA5Jirda0SD0ILhaJNTFZDz7z0sgxVH2ONnJ/exec/exec?mode=image&id=1X85r3e3v_Smt7WS0FukWtRJZgXxeDwkN';
 const urlAPI = 'https://script.google.com/macros/s/AKfycbypkVn2OKUSxc9679YDerWxFtpRyNnLeA5Jirda0SD0ILhaJNTFZDz7z0sgxVH2ONnJ/exec';
-// const vietQR = 'https://img.vietqr.io/image/vpb-939949568678-qr_only.jpg?addInfo={addInfo}&accountName={accountName}'
-const vietQR = 'https://img.vietqr.io/image/vietinbank-113366668888-qr_only.jpg?addInfo={addInfo}&accountName={accountName}'
-// const vietQR = '{addInfo}&accountName={accountName}' 113366668888
-// $(function(){
-//   $.get(url_bg_img, function(data) {
-//     console.log("Kết quả trả về:", data);
-//     // Nếu data là chuỗi base64, ta gán vào background
-//     $("body").css("background-image", `url('${data}')`);
-//   }).fail(function(err) {
-//     console.error("Lỗi khi load ảnh:", err);
-//   });
-// });
+const vietQR = 'https://img.vietqr.io/image/vietinbank-113366668888-qr_only.jpg?addInfo={addInfo}&accountName={accountName}';
 
 const getCustomerID = function (name,dob,phone) {
   name=name.split(' ').map(x=>x.substr(0,1).toUpperCase()).join('');
@@ -135,4 +124,5 @@ $('#uploadBtn').click(function(){
       });
     };
     reader.readAsDataURL(file);
+
 });
