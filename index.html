@@ -14,11 +14,42 @@
     <div class="register-card" id="registerFormContainer">
       <!-- <h2>Đăng ký thông tin</h2> -->      
       <form id="registerForm">
-        <div class="form-group"><label>Số điện thoại</label><input type="tel" name="phone" value="0901234567" required></div>
+<!--         <div class="form-group"><label>Số điện thoại</label><input type="tel" name="phone" value="0901234567" required></div>
         <div class="form-group"><label>Họ tên</label><input type="text" name="name" value="Nguyễn Văn A" required></div>
         <div class="form-group"><label>Thư điện tử</label><input type="email" name="email" value="nguyenvana@example.com" required></div>
         <div class="form-group"><label>Ngày sinh</label><input type="date" name="dob" value="1995-06-12" required></div>
-        <div class="form-group"><label>Nội dung đăng ký</label><input type="text" name="registered_data" value="Khóa học Phong Thủy 2025" required></div>
+        <div class="form-group"><label>Nội dung đăng ký</label><input type="text" name="registered_data" value="Khóa học Phong Thủy 2025" required></div> -->
+        <div class="form-group">
+          <label for="phone">Số điện thoại</label>
+          <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại của bạn" required>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Họ tên</label>
+          <input type="text" id="name" name="name" placeholder="Nhập họ và tên đầy đủ" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Thư điện tử</label>
+          <input type="email" id="email" name="email" placeholder="Nhập địa chỉ email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="dob">Ngày sinh</label>
+          <input type="date" id="dob" name="dob" required>
+        </div>
+
+        <div class="form-group">
+          <label>Nội dung đăng ký</label>
+          <div class="radio-group">
+            <label><input type="radio" name="registered_data" value="60 ngày" required> 60 ngày</label>
+            <label><input type="radio" name="registered_data" value="90 ngày"> 90 ngày</label>
+            <label><input type="radio" name="registered_data" value="180 ngày"> 180 ngày</label>
+            <label><input type="radio" name="registered_data" value="365 ngày"> 365 ngày</label>
+          </div>
+        </div>
+
+
         <button type="submit" id="btnSubmit">
           <!-- <img id="imgImg" src="./logo.png" /> -->
           <span>Đăng ký</span>
