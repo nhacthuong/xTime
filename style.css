@@ -288,9 +288,10 @@ button:hover {
   #registerForm{
     margin-top: 0;
   }
-/*  button{
-    font-size: 2em;    
-  }*/
+  button{
+    font-size: 2em;
+    padding: 0.5em;
+  }
   button img{
     width: 4.5vh;
   }
