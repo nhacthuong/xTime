@@ -57,47 +57,56 @@ h2 {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2vw;
+  gap: 1vw;
   align-items: stretch;
 }
 
 /* Form group */
 .form-group {
-  text-align: left;
-  padding: 0.8em;
+/*  text-align: left;*/
+  padding: 0.8em; 
 /*  margin-bottom: 0.8rem;*/
-  border: 1px solid white;
-  border-radius: 5px;
+/*  border: 1px solid white;*/
+/*  border-radius: 5px;*/
   color: #f7d5d5;
 /*  text-transform: capitalize;*/
-  font-size: 0.9em;
-  max-height: 8vh;
+/*  font-size: 2em;*/
+/*  max-height: 8vh;*/
   border-image: linear-gradient(135deg, rgb(219, 15, 15), rgb(127, 15, 219)) 1;
+/*  display: flex;*/
+/*  flex-direction: column;*/
+  gap: 0.1em;
 }
 
 /* Label */
 label {
   font-weight: 600;
   display: block;
-  font-family: "Grenze", serif;
+  font-family: "Montagu Slab", serif;
+  text-align: left;
+  font-size: 1.3em;
 }
 
 input:not(input[type="radio"]) { 
   width: 100%; 
   box-sizing: border-box;
   border: none; 
-  border-radius: 6px; 
+/*  border-radius: 6px; */
   /*! font-size: 1.3em; */ 
-  padding: 0.6em 0 0.2em 1.6em; 
+  /*! padding: 0.6em 0 0.2em 1.6em; */ 
   min-width: 0; 
 /*  font-weight: bold; */
   background: transparent;
   color: white;
-  font-family: "Montagu Slab", serif; 
+  font-family: "Luxurious Roman", serif; 
+  font-size: 3em;
+  border-bottom: 1px solid white;
+  border-image: linear-gradient(135deg, rgb(219, 15, 15), rgb(127, 15, 219)) 1;
 }
 
-input:focus {
+input:not(input[type="radio"]):focus {
   outline: none;
+  box-shadow: 0 2px 0 0 rgba(255, 102, 0, 0.8);
 }
 
 /* Trường hợp input date trên Opera, Chrome, Edge */
@@ -126,13 +135,14 @@ button {
   padding: 1.2em;
   border-radius: 6px;
   cursor: pointer;
-  font-weight: 600;
+/*  font-weight: 600;*/
   background: linear-gradient(135deg, rgb(219, 15, 15), rgb(127, 15, 219));
   display: flex;
   justify-content: center;
   align-items: center;
   text-transform: capitalize; 
-  font-family: "Potta One", system-ui;
+  font-family: "Genos", sans-serif;
+  font-size: 3em;
 }
 
 button img{
@@ -145,9 +155,9 @@ button:hover {
   background-color: #a01515;
 }
 
-.form-group:focus-within {
+/*.form-group:focus-within {
   box-shadow: 0 0 10px rgba(255, 102, 0, 0.6);
-}
+}*/
 
 /* QR hình */
 .qr {
@@ -294,7 +304,11 @@ button:hover {
   color: white;
   line-height: 1.5;
   font-family: "Montagu Slab", serif;
-  font-size: 0.68em;
+  /*! font-size: 1.2em; */
+}
+
+#qrContainer p{
+  font-size: 1.3em;
 }
 
 #lblError{
