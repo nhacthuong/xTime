@@ -14,11 +14,10 @@
     <div class="register-card" id="registerFormContainer">
       <!-- <h2>Đăng ký thông tin</h2> -->      
       <form id="registerForm">
-<!--         <div class="form-group"><label>Số điện thoại</label><input type="tel" name="phone" value="0901234567" required></div>
+       <!--  <div class="form-group"><label>Số điện thoại</label><input type="tel" name="phone" value="0901234567" required></div>
         <div class="form-group"><label>Họ tên</label><input type="text" name="name" value="Nguyễn Văn A" required></div>
         <div class="form-group"><label>Thư điện tử</label><input type="email" name="email" value="nguyenvana@example.com" required></div>
-        <div class="form-group"><label>tháng sinh</label><input type="date" name="dob" value="1995-06-12" required></div>
-        <div class="form-group"><label>Nội dung đăng ký</label><input type="text" name="registered_data" value="Khóa học Phong Thủy 2025" required></div> -->
+        <div class="form-group"><label>tháng sinh</label><input type="date" name="dob" value="1995-06-12" required></div> -->
         <div class="form-group">
           <label for="phone">Số điện thoại</label>
           <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại của bạn" required>
@@ -35,7 +34,7 @@
         </div>
 
         <div class="form-group">
-          <label for="dob">Ngày tháng sinh</label>
+          <label for="dob">Ngày sinh nhật</label>
           <input type="date" id="dob" name="dob" value="1991-12-31" required>
         </div>
 
@@ -62,7 +61,7 @@
     <!-- QR + 2 nút -->
     <div id="qrContainer" class="register-card hidden">
       <h2>🌸 Trao gửi năng lượng khai mở 🌸</h3>
-      <img id="imgQR" style="width:10vw" alt="QR chuyển khoản" class="qr">
+      <div id="qr"></div>
       <p>
         Khoản chuyển là sự trao gửi năng lượng để khai mở hành trình của bạn.<br>
         Dù là bất kỳ con số nào, điều quý giá nhất vẫn là tâm thành khi bạn trao đi.<br>
@@ -94,6 +93,7 @@
 
     <!-- <script><?!= include('script') ?></script> -->
     <!-- bất đồng bộ không chờ DOM // parallel -->
+    <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js" async></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js" async></script>
