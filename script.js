@@ -1,14 +1,4 @@
 const urlAPI = 'https://script.google.com/macros/s/AKfycbypkVn2OKUSxc9679YDerWxFtpRyNnLeA5Jirda0SD0ILhaJNTFZDz7z0sgxVH2ONnJ/exec';
-// $(function(){
-//   $.get(url_bg_img, function(data) {
-//     console.log("Kết quả trả về:", data);
-//     // Nếu data là chuỗi base64, ta gán vào background
-//     $("body").css("background-image", `url('${data}')`);
-//   }).fail(function(err) {
-//     console.error("Lỗi khi load ảnh:", err);
-//   });
-// });
-
 const getCustomerID = function (name,dob,phone) {
   name=name.split(' ').map(x=>x.substr(0,1).toUpperCase()).join('');
   dob=dob.replace(/-/g,'');
@@ -61,11 +51,11 @@ $('#registerForm').on('submit', function(e) {
           console.log("✅ Thành công:", res);
           $("#registerFormContainer").hide();
           $("#qrContainer").show();
-          $('#lblError').text(customerID);
+          // $('#lblError').text(customerID);
           const qr = new QRCodeStyling({
             data: res.code,
-            width: 200,
-            height: 200,
+            width: 150,
+            height: 150,
             image: "favicon.png", // logo giữa QR
             dotsOptions: {
               color: "#c8102e", // đỏ thương hiệu
