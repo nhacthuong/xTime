@@ -1,7 +1,4 @@
-// const url_bg_img='https://script.google.com/macros/s/AKfycbypkVn2OKUSxc9679YDerWxFtpRyNnLeA5Jirda0SD0ILhaJNTFZDz7z0sgxVH2ONnJ/exec/exec?mode=image&id=1X85r3e3v_Smt7WS0FukWtRJZgXxeDwkN';
 const urlAPI = 'https://script.google.com/macros/s/AKfycbypkVn2OKUSxc9679YDerWxFtpRyNnLeA5Jirda0SD0ILhaJNTFZDz7z0sgxVH2ONnJ/exec';
-const vietQR = 'https://img.vietqr.io/image/vietinbank-113366668888-qr_only.jpg?addInfo={addInfo}&accountName={accountName}'
-// const vietQR = '{addInfo}&accountName={accountName}' 113366668888
 // $(function(){
 //   $.get(url_bg_img, function(data) {
 //     console.log("Kết quả trả về:", data);
@@ -65,10 +62,20 @@ $('#registerForm').on('submit', function(e) {
           $("#registerFormContainer").hide();
           $("#qrContainer").show();
           $('#lblError').text(customerID);
-          // let QR = vietQR.replace('{accountName}','Le Xuan Hien').replace('{addInfo}',res.code);
-          let sQR = 'https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=' + res.code;
-          console.log(sQR)
-          $('#imgQR').attr('src',sQR);
+          const qr = new QRCodeStyling({
+            data: res.code,
+            width: 200,
+            height: 200,
+            image: "favicon.png", // logo giữa QR
+            dotsOptions: {
+              color: "#c8102e", // đỏ thương hiệu
+              type: "rounded"
+            },
+            backgroundOptions: {
+              color: "#ffffff"
+            }
+          });
+          qr.append(document.getElementById("qr"));
         }
         else{
           $('#lblError').text(res.message);
