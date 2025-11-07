@@ -1,4 +1,8 @@
 const urlAPI = 'https://script.google.com/macros/s/AKfycbypkVn2OKUSxc9679YDerWxFtpRyNnLeA5Jirda0SD0ILhaJNTFZDz7z0sgxVH2ONnJ/exec';
+$(function(){
+  localStorage.clear();
+});
+
 const getCustomerID = function (name,dob,phone) {
   name=name.split(' ').map(x=>x.substr(0,1).toUpperCase()).join('');
   dob=dob.replace(/-/g,'');
@@ -50,8 +54,10 @@ $('#registerForm').on('submit', function(e) {
         if(res.status === 'success'){
           console.log("✅ Thành công:", res);
           $("#registerFormContainer").hide();
+          $("#qrContainer div#qr").html('');
           $("#qrContainer").show();
           // $('#lblError').text(customerID);
+          localStorage.setItem('customerID', customerID);
           const qr = new QRCodeStyling({
             data: res.code,
             width: 150,
@@ -107,7 +113,7 @@ $('#uploadBtn').click(function(){
       $.ajax({
         url: urlAPI,
         method: "POST",
-        data: { uniqueId: $('#lblError').text(), imageBase64: e.target.result, action: 'IMAGE_UPLOAD' },      
+        data: { uniqueId: localStorage.getItem('customerID'), imageBase64: e.target.result, action: 'IMAGE_UPLOAD' },      
         beforeSend: function () {
           $("#spinnerForm").show();
           $("#btnSubmit").hide();
