@@ -7,12 +7,26 @@ body {
   padding: 10vw;
   margin: 0;
   box-sizing: border-box;
+  height: 100vh;
+
   background-image: url('./background.jpg');
   background-size: cover;      /* phóng to vừa màn hình */
   background-position: center; /* căn giữa */
   background-repeat: no-repeat;
-  height: 100vh;
+/*  background-color: rgba(255, 255, 255, 0.15); /* phủ trắng mờ */*/
+/*  background-blend-mode: screen;*/
+  overflow: hidden;
+
 }
+
+/* Lớp phủ trắng mờ */
+/*body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.4);
+  z-index: 0;
+}*/
 
 /* Card chung */
 .register-card {
@@ -29,6 +43,7 @@ body {
   align-items: center;
   color: white;
   line-height: 1.5;
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 
@@ -103,6 +118,7 @@ input:not(input[type="radio"]) {
   border-bottom: 1px solid white;
   border-image: linear-gradient(135deg, rgb(219, 15, 15), rgb(127, 15, 219)) 1;
   text-align: left;
+  padding: 0.3em 0;
 }
 
 input:not(input[type="radio"]):focus {
