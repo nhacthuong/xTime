@@ -272,9 +272,9 @@ button:hover {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
   }
   .form-grid {
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
