@@ -277,7 +277,6 @@ button:hover {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
   }
   .plan-options {
     flex-direction: column;
