@@ -276,7 +276,6 @@ button:hover {
   }
   .form-grid {
     grid-template-columns: 1fr;
-    gap: 0;
   }
   .plan-options {
     flex-direction: column;
