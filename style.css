@@ -275,7 +275,9 @@ button:hover {
     justify-content: space-between;
   }
   .form-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   .plan-options {
     flex-direction: column;
