@@ -1,216 +1,180 @@
-/* Toàn bộ body */
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montagu Slab", serif;
+  margin: 0;
+  padding: 0 10%;
+  background: radial-gradient(circle at top right, #2a1a3c 0%, #0d0b1f 80%);
+  color: #f8e6b8;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10vw;
-  margin: 0;
-  box-sizing: border-box;
-  height: 100vh;
-
-  background-image: url('./background.jpg');
+  height: 100vh; 
+  background-image: url('./background.png');
   background-size: cover;      /* phóng to vừa màn hình */
   background-position: center; /* căn giữa */
   background-repeat: no-repeat;
-/*  background-color: rgba(255, 255, 255, 0.15); /* phủ trắng mờ */*/
-/*  background-blend-mode: screen;*/
-  overflow: hidden;
-
 }
 
-/* Lớp phủ trắng mờ */
-/*body::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.4);
-  z-index: 0;
-}*/
+.hidden { display: none; }
 
-/* Card chung */
-.register-card {
-  padding: 3vw;
-  border-radius: 1vw;
-  text-align: center;
-  box-sizing: border-box;
-  width: 100vw;
-  background: linear-gradient(135deg, black, rgba(46, 6, 69, 0.8));
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+/* --- Form Box --- */
+.form-container {
+  border: 1px solid rgba(255, 215, 128, 0.6);
+  border-radius: 10px;
+  padding: 5%;
+  background: rgba(25, 15, 35, 0.6);
+  box-shadow: 0 0 25px rgba(255, 204, 128, 0.05);
+  backdrop-filter: blur(6px);
+  flex: 1;
+  max-width: 50vw;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem 3rem;
+}
+
+.form-group {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  line-height: 1.5;
-  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-
-/*#imgImg{
-  width: 8vw;
-  height: auto;
-}
-*/
-/* Heading */
-h2 {
-  color: #f7d5d5;
-  margin: 0 !important;
-  margin-bottom: 0.8rem !important;
-  text-transform: capitalize;
-  font-size: 2em;
-  font-family: "Montagu Slab", serif;
-}
-
-.info-form{
-  padding: 3vw;  
-}
-
-#registerForm{
-  margin-top: 3vh;
-  width: 100%;
-  flex: 1;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1vw;
-  align-items: stretch;
-}
-
-/* Form group */
-.form-group {
-/*  text-align: left;*/
-  padding: 0.8em; 
-/*  margin-bottom: 0.8rem;*/
-/*  border: 1px solid white;*/
-/*  border-radius: 5px;*/
-  color: #f7d5d5;
-/*  text-transform: capitalize;*/
-/*  font-size: 2em;*/
-/*  max-height: 8vh;*/
-  border-image: linear-gradient(135deg, rgb(219, 15, 15), rgb(127, 15, 219)) 1;
-/*  display: flex;*/
-/*  flex-direction: column;*/
-  gap: 0.1em;
-}
-
-/* Label */
 label {
+  font-size: 1.2vw;
+  letter-spacing: 1px;
   font-weight: 600;
-  display: block;
-  font-family: "Montagu Slab", serif;
-  text-align: left;
-  font-size: 1.1em;
+  color: #f6d77a;
+  margin-bottom: 0.5rem;
+}
+.radio-label label{
+  font-family: "Bellota", system-ui;
+  font-size: 1.5vw;
+  font-weight: normal;
+  color: #666;
+}
+.radio-label label:hover{
+  cursor: pointer;
+}
+
+input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 240, 200, 0.4);
+  color: #f8e6b8;
+  font-size: 1.5vw;
+  padding: 0.3rem 0;
+  outline: none;
+  transition: all 0.3s ease;
+  font-family: "Bellota", system-ui;
 }
 
 input:not(input[type="radio"]) { 
   width: 100%; 
-  box-sizing: border-box;
-  border: none; 
-/*  border-radius: 6px; */
-  /*! font-size: 1.3em; */ 
-  /*! padding: 0.6em 0 0.2em 1.6em; */ 
-  min-width: 0; 
-/*  font-weight: bold; */
-  background: transparent;
-  color: white;
-  font-family: "Luxurious Roman", serif; 
-  font-size: 2em;
-  border-bottom: 1px solid white;
-  border-image: linear-gradient(135deg, rgb(219, 15, 15), rgb(127, 15, 219)) 1;
-  text-align: left;
-  padding: 0.3em 0;
+}  
+
+input:focus {
+  border-bottom: 1px solid #f6d77a;
 }
 
-input:not(input[type="radio"]):focus {
-  outline: none;
-  box-shadow: 0 2px 0 0 rgba(255, 102, 0, 0.8);
+input:disabled, select:disabled {
+  background-color: rgba(50, 30, 60, 0.6);
+  color: #aaa;
+  border-color: #555;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+input[type="radio"]:checked + span {
+  color: #f8e6b8;
 }
 
-/* Trường hợp input date trên Opera, Chrome, Edge */
-input[type="date"]::-webkit-inner-spin-button,
-input[type="date"]::-webkit-calendar-picker-indicator {
-  -webkit-appearance: none;
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-  text-align: left;
-}
-
-/* Chặn date input overflow */
-input[type="date"] {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  box-sizing: border-box;
-}
-
-
-/* Button */
-button {
+.plan-select {
+  font-family: "Bellota", system-ui;
   width: 100%;
-  background-color: #b91c1c;
-  color: white;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border: 1px solid rgba(255, 215, 128, 0.6);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  color: red;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg width="14" height="10" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l6 6 6-6" stroke="%23f8e6b8" stroke-width="2" fill="none" fill-rule="evenodd"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 12px;
+}
+
+.plan-select:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.12);
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg width="14" height="10" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l6 6 6-6" stroke="%23f8e6b8" stroke-width="2" fill="none" fill-rule="evenodd"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 12px;
+}
+
+/* Force style cho option */
+.plan-select option {
+  color: #b62f27;
+}
+
+/* Một số trình duyệt mobile / Safari */
+.plan-select optgroup,
+.plan-select option:checked,
+.plan-select option:hover {
+  font-weight: bold;
+}
+
+input[type="radio"] {
+  accent-color: #f6d77a;
+}
+
+/* --- Submit Button --- */
+button {
+  margin: 2rem auto 0;
+  display: block;
+  background: linear-gradient(90deg, #d74b35, #b62f27);
+  color: #f8e6b8;
+  font-family: "Genos", sans-serif;
+  font-size: 2vw;
+  padding: 0.8rem 3rem;
   border: none;
-  /*! padding: 1.2em; */
   border-radius: 6px;
   cursor: pointer;
-/*  font-weight: 600;*/
-  background: linear-gradient(135deg, rgb(219, 15, 15), rgb(127, 15, 219));
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-transform: capitalize; 
-  font-family: "Genos", sans-serif;
-  font-size: 3em;
-}
-
-button img{
-  width: auto;
-  height: 2em;
-  margin-right: 1em;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 215, 128, 0.6);
+  text-transform: uppercase;
 }
 
 button:hover {
-  background-color: #a01515;
+  background: linear-gradient(90deg, #e36d4c, #c33b2d);
+  transform: scale(1.03);
+  border-color: red;
 }
 
-/*.form-group:focus-within {
-  box-shadow: 0 0 10px rgba(255, 102, 0, 0.6);
-}*/
-
-/* QR hình */
-.qr {
-  width: 180px;
-  max-width: 100%;
-  margin: 10px auto;
-  display: block;
-}
-
-/* Popup buttons / QR & Upload buttons */
-.popup-buttons {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.popup-buttons button {
-  flex: 1;
-}
-
-/* Upload section */
-#uploadSection input[type="file"] {
-  width: 100%;
+.spinner-container{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(0, 0, 0, 0.6);
+  border-radius: 10px;
 }
 
 /* Spinner */
 .spinner {
+  position: absolute;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
   border: 4px solid #f3f3f3;
   border-top: 4px solid #b91c1c;
   border-radius: 50%;
   width: 30px;
   height: 30px;
   animation: spin 1s linear infinite;
-  margin: 10px auto;
 }
 
 @keyframes spin {
@@ -218,130 +182,145 @@ button:hover {
   100% { transform: rotate(360deg); }
 }
 
-/* Success tick */
+#qrContainer{
+  text-align: center;
+  font-size: 1.3vw;
+}
+
+.popup-buttons{
+  display: flex;
+  gap: 2rem;
+}
+
+.popup-buttons button{
+  flex: 1;
+}
+
+#uploadSection h2{
+  text-align: center;
+  text-transform: capitalize;
+}
+
+/* Container chính */
+.file-upload {
+  border: 1px dashed #d74b35;
+  border-radius: 10px;
+  padding: 2em 0 ;
+  text-align: center;
+  transition: border-color 0.3s, background 0.3s;
+  min-height: 30vh;
+  display: flex;
+  justify-content: center;
+}
+
+.file-upload.dragover {
+  border-color: #0056b3;
+  background: #e6f0ff;
+}
+
+.file-upload:hover {
+  cursor: pointer;
+}
+
+/* Ẩn input gốc */
+.file-upload input[type="file"] {
+  display: none;
+}
+.file-upload-label{
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+/* Icon + text */
+.file-upload-label svg {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 1rem;
+}
+.file-name {
+  color: white;
+  font-weight: normal;
+}
+
+#successSection{
+  text-align: center;
+  font-size: 2vw;
+}
+
 #successSection .tick {
   font-size: 60px;
   color: #16a34a;
   margin-bottom: 15px;
 }
 
-/* Ẩn class */
-.hidden { display: none; }
-
-.radio-group {
-    position: relative;
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  .form-container{
+    position: fixed;
+    bottom: 3vw;
+    top: 3vw;
+    left: 3vw;
+    right: 3vw;
     display: flex;
     flex-direction: column;
-    gap: 40px;
-    /*! padding-left: 25px; */
-    /*! margin-left: 20px; */
+    justify-content: space-evenly;
+    max-width: 100%;
   }
-
-  .radio-item {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-  }
-
-  /* Radio button tròn hoàn hảo */
-  .radio-item input[type="radio"] {
-    appearance: none;
-    -webkit-appearance: none;
-    height: 20px;
-    width: 20px;
-    border: 2px solid #b91c1c;
-    border-radius: 50%;
-    background: transparent;
-    margin: 0;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
-    margin-right: 1em;
-  }
-
-  .radio-item input[type="radio"]:checked {
-    background: radial-gradient(circle, #ff0000 45%, transparent 46%);
-    box-shadow: 0 0 8px #ffd700;
-    border-color: #ff0000;
-  }
-
-  .radio-item label {
-    font-size: 16px;
-    cursor: pointer;
-    line-height: 1.5;
-  }
-
-@media (max-width: 768px) {
-  body{
-    padding: 0;
-  }
-  #registerForm{
-    font-size: 2.6vh;
-    display: flex;
-    flex-direction: column;
-/*    justify-content: center;*/
-    gap: 2vh;
-  }
-  .register-card {
-    height: 100%;
-    padding: 2vh;
-  }
-  .form-group{
-    flex:1;
+  .register-form{
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
   }
-  #registerForm{
-    margin-top: 0;
+  .form-grid {
+    grid-template-columns: 1fr;
   }
-  button{
-    font-size: 1.5em;
-    padding: 0.5em;
-    max-height: 100%;
+  .plan-options {
+    flex-direction: column;
+    gap: 0.6rem;
   }
-  button img{
-    width: 4.5vh;
+  .plan-options label{
+    font-size: 1.2rem;
+  }
+  .btn-submit{
+    font-size: 1.6rem;
+    margin-right: 0;
+    margin-left: 0;
   }
   label{
-    font-size: 0.9em;
+    font-size: 1.3rem;
   }
-  input:not(input[type="radio"]){
-    font-size: 1.2em;
+  .radio-label label {
+    font-size: 1.5rem;
   }
-}
+  input{
+    font-size: 1.2rem;
+  }
+  button {
+    font-size: 1.6rem;
+    margin: 0;
+    width: 100%;
+    margin-top: 3vh;
+  }
 
-#qrContainer{
-  color: white;
-  line-height: 1.5;
-  font-family: "Montagu Slab", serif;
-  /*! font-size: 1.2em; */
-}
+  #qrContainer{
+    text-align: center;
+    font-size: 1.3rem;
+  }
+  .popup-buttons{
+    display: inline-block;
+  }
 
-#qrContainer p{
-  font-size: 1.3em;
-}
+  #uploadSection h2{
+    font-size: 1.5rem;
+  }
+  .file-name {
+    font-size: 1rem;
+  }
 
-#lblError{
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-.radio-group {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1vw;
-  align-items: stretch;
-  margin-top: 6px;
-}
-
-.radio-group label {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  cursor: pointer;
-}
-.radio-group label:first-child {
-  grid-column: span 2; /* chiếm 2 cột */
+  #successSection{
+    font-size: 1.6rem;
+  }
 }
