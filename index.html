@@ -1,74 +1,67 @@
 <!DOCTYPE html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng ký thông tin</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <!-- <style><?!= include('style') ?></style> -->
-    <link rel="stylesheet" href="./fonts.css">
-    <link rel="stylesheet" href="./style.css">
-  </head>
-  <body>
-    <div id="lblError"></div>
-    <div class="register-card" id="registerFormContainer">
-      <!-- <h2>Đăng ký thông tin</h2> -->      
-      <form id="registerForm">
-       <!--  <div class="form-group"><label>Số điện thoại</label><input type="tel" name="phone" value="0901234567" required></div>
-        <div class="form-group"><label>Họ tên</label><input type="text" name="name" value="Nguyễn Văn A" required></div>
-        <div class="form-group"><label>Thư điện tử</label><input type="email" name="email" value="nguyenvana@example.com" required></div>
-        <div class="form-group"><label>tháng sinh</label><input type="date" name="dob" value="1995-06-12" required></div> -->
-        <div class="form-group">
-          <label for="phone">Số điện thoại</label>
-          <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại của bạn" required>
-        </div>
-
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đăng ký</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="./fonts.css" />
+  <link rel="stylesheet" href="./style.css" />
+<!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+<!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+<!-- <link href="https://fonts.googleapis.com/css2?family=Bellota:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Grenze+Gotisch:wght@100..900&family=Rowdies:wght@300;400;700&display=swap" rel="stylesheet"> -->
+</head>
+<body>
+  <div class="form-container hidden">
+    <form class="register-form" id="registerForm">
+      <div class="form-grid">
         <div class="form-group">
           <label for="name">Họ tên</label>
-          <input type="text" id="name" name="name" placeholder="Nhập họ và tên đầy đủ" required>
+          <input type="text" name="name" id="name" placeholder="Nhập họ và tên đầy đủ" value="NGUYEN VAN A" />
         </div>
-
+        <div class="form-group">
+          <label for="birthday">Ngày sinh nhật</label>
+          <input type="date" name="dob" id="dob" value="1991-12-31" />
+        </div>
+        <div class="form-group">
+          <label for="phone">Số điện thoại</label>
+          <input type="text" name="phone" id="phone" placeholder="Nhập số điện thoại của bạn" value="0912345678" maxlength="10" />
+        </div>
         <div class="form-group">
           <label for="email">Thư điện tử</label>
-          <input type="email" id="email" name="email" placeholder="Nhập địa chỉ email" required>
+          <input type="email" name="email" id="email" placeholder="Nhập địa chỉ email" value="anguyenvan@gmail.com" />
         </div>
-
         <div class="form-group">
-          <label for="dob">Ngày sinh nhật</label>
-          <input type="date" id="dob" name="dob" value="1991-12-31" required>
-        </div>
-
-        <div class="form-group">
-          <!-- <label>Nội dung lựa chọn</label> -->
-          <div class="radio-group">
-            <label><input type="radio" name="registered_data" value="miễn phí" checked> 1 tháng (miễn phí)</label>
-            <label><input type="radio" name="registered_data" value="3 tháng"> 3 tháng</label>
-            <label><input type="radio" name="registered_data" value="6 tháng"> 6 tháng</label>
-            <label><input type="radio" name="registered_data" value="9 tháng"> 9 tháng</label>
-            <label><input type="radio" name="registered_data" value="12 tháng"> 12 tháng</label>
+          <label for="gender">Giới tính</label>
+          <div class="radio-label">
+            <label><input type="radio" name="gender" value="nam" checked /> <span>Nam</span></label>
+            <label><input type="radio" name="gender" value="nữ" /> <span>Nữ</span></label>
           </div>
         </div>
+        <div class="form-group">
+          <label for="plan">Gói đăng ký</label>
+          <select id="plan" name="registered_data" class="plan-select">
+            <option value="free" selected>* Miễn phí</option>
+            <option value="3m">3 tháng</option>
+            <option value="6m">6 tháng</option>
+            <option value="12m">12 tháng</option>
+          </select>
+        </div>
+      </div>
 
-
-        <button type="submit" id="btnSubmit">
-          <!-- <img id="imgImg" src="./logo.png" /> -->
-          <span>Đăng ký</span>
-        </button>
-        <div id="spinnerForm" class="spinner hidden"></div>
-      </form>
-    </div>
+      <button type="submit" class="btn-submit" id="btnSubmit">ĐĂNG KÝ</button>
+      <div class="spinner-container hidden" id="spinnerForm" ><div class="spinner"></div></div>
+    </form>
 
     <!-- QR + 2 nút -->
     <div id="qrContainer" class="register-card hidden">
       <!-- <h2>🌸 Trao gửi năng lượng khai mở 🌸</h3> -->
       <div id="qr"></div>
       <p>
-        Khoản chuyển là sự trao gửi năng lượng để khai mở hành trình của bạn.<br>
-        Dù là bất kỳ con số nào, điều quý giá nhất vẫn là tâm thành khi bạn trao đi.<br>
-        Khi năng lượng trao – nhận được cân bằng, hành trình của bạn sẽ thuận duyên và khai mở sâu hơn.
+        Khoản chuyển là sự trao gửi năng lượng để khai mở hành trình của bạn. Dù là bất kỳ con số nào, điều quý giá nhất vẫn là tâm thành khi bạn trao đi. Khi năng lượng trao – nhận được cân bằng, hành trình của bạn sẽ thuận duyên và khai mở sâu hơn.
       </p>
       <div class="popup-buttons">
-        <button id="editBtn">Sửa thông tin đăng ký</button>
+        <button id="editBtn">Đổi thông tin</button>
         <button id="paidBtn">Đã thanh toán</button>
       </div>
     </div>
@@ -76,28 +69,41 @@
     <!-- Upload hình -->
     <!-- <div id="uploadSection" class="register-card"> -->
     <div id="uploadSection" class="register-card hidden">
-      <h2>🌸 Đã chuyển khoản 🌸</h3>
+      <h2>Đã chuyển khoản</h3>
       <form id="uploadForm">
-        <input type="file" id="fileInput" accept="image/*"><br><br>
-        <button type="button" id="uploadBtn">Tải hình lên</button>
-        <div id="spinnerUpload" class="spinner hidden"></div>
+        <div class="file-upload" id="fileUpload">
+          <label class="file-upload-label" for="fileInput">
+            <!-- Icon upload -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
+                <path d="M14.002 3a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12zm-1 1H3v7.002l3.146-3.147a.5.5 0 0 1 .708 0L11 11.293 13 9V4z"/>
+                <path d="M10.648 7.646a.5.5 0 1 0-.707-.707l-1.647 1.646-1.647-1.646a.5.5 0 0 0-.707.707l2 2a.5.5 0 0 0 .707 0l2-2z"/>
+              </svg>
+            <!-- Chọn hình ảnh hoặc kéo thả -->
+          <div class="file-name" id="fileName">Nhấn để chọn hình ảnh.<br>Hoặc kéo thả.</div>
+          </label>
+          <input type="file" id="fileInput">
+        </div>
+        <button type="button" id="uploadBtn">Xác nhận</button>
+        <div class="spinner-container hidden" id="spinnerUpload" ><div class="spinner"></div></div>
       </form>
     </div>
 
     <!-- Success -->
     <div id="successSection" class="register-card hidden">
       <div class="tick">&#10004;</div>
-      <p>Bạn đã chuyển thành công!<br>Lịch sẽ được gửi về email bạn đã đăng ký.<br>Nếu có thắc mắc vui lòng liên hệ XXX.</p>
-      <button id="closeSuccess">Đóng</button>
+      <p>Bạn đã chuyển thành công!<br><br>Lịch sẽ được gửi về email bạn đã đăng ký. Mọi thắc mắc vui lòng liên hệ XXX.</p>
+      <button id="closeSuccess">Đăng ký thêm</button>
     </div>
+  </div>
 
-    <!-- <script><?!= include('script') ?></script> -->
-    <!-- bất đồng bộ không chờ DOM // parallel -->
-    <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js" async></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js" async></script>
-    <!-- đồng bộ sau DOM // sequential -->
-    <script type="text/javascript" src="./script.js" defer></script>
-  </body>
+
+  <!-- <script><?!= include('script') ?></script> -->
+  <!-- bất đồng bộ không chờ DOM // parallel -->
+  <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>  
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js" async></script> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js" async></script> -->
+  <!-- đồng bộ sau DOM // sequential -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js" defer></script>
+  <script type="text/javascript" src="./script.js" defer></script>
+</body>
 </html>
