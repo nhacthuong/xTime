@@ -1,6 +1,8 @@
 const urlAPI = 'https://script.google.com/macros/s/AKfycbypkVn2OKUSxc9679YDerWxFtpRyNnLeA5Jirda0SD0ILhaJNTFZDz7z0sgxVH2ONnJ/exec';
 $(function(){
   localStorage.clear();
+  $('.form-container').removeClass('hidden');
+  $('registerForm').show();  
 });
 
 const getCustomerID = function (name,dob,phone) {
@@ -26,7 +28,8 @@ $('#registerForm').on('submit', function(e) {
   let getValueFrom= async()=>{ 
     let input_obj = {};
 
-    $(this).find('input').filter(function() {
+    // console.log($(this).find('*[name]'));
+    $(this).find('*[name]').filter(function() {
       return $(this).attr('type') !== 'radio' || $(this).prop('checked');
     }).each(function() {
       input_obj[$(this).attr('name').toUpperCase()] = $(this).val();
@@ -37,7 +40,7 @@ $('#registerForm').on('submit', function(e) {
 
   getValueFrom().then(function(resp_data){
     let customerID = getCustomerID(resp_data["NAME"],resp_data["DOB"],resp_data["PHONE"]);
-
+    // console.log(resp_data)
     resp_data["ID"]=customerID;
 
     $.ajax({
@@ -46,14 +49,12 @@ $('#registerForm').on('submit', function(e) {
       data: resp_data,      
       beforeSend: function () {
         $("#spinnerForm").show();
-        $("#btnSubmit").hide();
-        $("form#registerForm :input").attr("readonly", true);
-        $('form#registerForm :input:not(input[type="radio"])').css("color", '#666');
+        $("form#registerForm *").attr("disabled", true);
       },
       success: function(res) {
         if(res.status === 'success'){
           console.log("✅ Thành công:", res);
-          $("#registerFormContainer").hide();
+          $("#registerForm").hide();
           $("#qrContainer div#qr").html('');
           $("#qrContainer").show();
           // $('#lblError').text(customerID);
@@ -68,7 +69,7 @@ $('#registerForm').on('submit', function(e) {
               type: "rounded"
             },
             backgroundOptions: {
-              color: "#ffffff"
+              color: "#f8e6b8"
             }
           });
           qr.append(document.getElementById("qr"));
@@ -81,11 +82,10 @@ $('#registerForm').on('submit', function(e) {
         console.error("❌ Lỗi:", status, err);
         $('#lblError').text("❌ Lỗi:", status, err);
       },
-      complete: function() {
-        $("form#registerForm :input").attr("readonly", false);
-        $('form#registerForm :input:not(input[type="radio"])').css("color", '#fff');
+      complete: function(xhr) {
+        $("form#registerForm *").attr("disabled", false);
         $("#spinnerForm").hide();
-        $("#btnSubmit").show();
+        console.log(xhr)
       }
     });
   });
@@ -106,7 +106,6 @@ $('#uploadBtn').click(function(){
     const file = fileInput.files[0];
     if(!file) return alert("Chọn hình trước khi upload.");
     $('#spinnerUpload').show();
-    $('#uploadBtn').hide();
 
     const reader = new FileReader();
     reader.onload = e=>{
@@ -116,9 +115,6 @@ $('#uploadBtn').click(function(){
         data: { uniqueId: localStorage.getItem('customerID'), imageBase64: e.target.result, action: 'IMAGE_UPLOAD' },      
         beforeSend: function () {
           $("#spinnerForm").show();
-          $("#btnSubmit").hide();
-          $("#fileInput").attr("disabled", true);
-          $('#fileInput').css("color", '#666');
         },
         success: function(res) {
           $('#spinnerUpload').hide();
@@ -133,10 +129,7 @@ $('#uploadBtn').click(function(){
           alert("Lỗi khi upload hình: " + (err.message || err));
         },
         complete: function() {
-          $("#fileInput").attr("disabled", false);
-          $('#fileInput').css("color", '#fff');
           $("#spinnerForm").hide();
-          $("#btnSubmit").show();
         }
       });
     };
@@ -145,5 +138,37 @@ $('#uploadBtn').click(function(){
 
 $('#closeSuccess').click(function(){
     $("#successSection").hide();
-    $("#registerFormContainer").show();
+    $("#registerForm").show();
+});
+
+const fileUpload = document.getElementById('fileUpload');
+const input = document.getElementById('fileInput');
+const fileName = document.getElementById('fileName');
+
+// Hiển thị tên file khi chọn
+input.addEventListener('change', () => {
+  if(input.files.length > 0) {
+    fileName.textContent = input.files[0].name;
+  } else {
+    fileName.textContent = "Chưa có tệp nào";
+  }
+});
+
+// Kéo thả
+fileUpload.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  fileUpload.classList.add('dragover');
+});
+
+fileUpload.addEventListener('dragleave', () => {
+  fileUpload.classList.remove('dragover');
+});
+
+fileUpload.addEventListener('drop', (e) => {
+  e.preventDefault();
+  fileUpload.classList.remove('dragover');
+  if(e.dataTransfer.files.length > 0) {
+    input.files = e.dataTransfer.files; // gán file vào input
+    fileName.textContent = e.dataTransfer.files[0].name;
+  }
 });
