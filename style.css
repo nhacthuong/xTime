@@ -7,7 +7,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100rem;
+  height: 100vh;
   background-image: url('./background.png');
   background-size: cover;      /* phóng to vừa màn hình */
   background-position: center; /* căn giữa */
@@ -276,6 +276,7 @@ button:hover {
   }
   .form-grid {
     grid-template-columns: 1fr;
+    gap: 2vh 0;
   }
   .plan-options {
     flex-direction: column;
