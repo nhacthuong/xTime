@@ -92,7 +92,7 @@ $('#registerForm').on('submit', function(e) {
 });
 
 $('#editBtn').click(function(){
-    $("#registerFormContainer").show();
+    $("#registerForm").show();
     $("#qrContainer").hide();
 });
 
@@ -172,3 +172,4 @@ fileUpload.addEventListener('drop', (e) => {
     fileName.textContent = e.dataTransfer.files[0].name;
   }
 });
+
