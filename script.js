@@ -54,10 +54,6 @@ $('#registerForm').on('submit', function(e) {
       success: function(res) {
         if(res.status === 'success'){
           console.log("✅ Thành công:", res);
-          $("#registerForm").hide();
-          $("#qrContainer div#qr").html('');
-          $("#qrContainer").show();
-          // $('#lblError').text(customerID);
           localStorage.setItem('customerID', customerID);
           const qr = new QRCodeStyling({
             data: res.code,
@@ -73,6 +69,13 @@ $('#registerForm').on('submit', function(e) {
             }
           });
           qr.append(document.getElementById("qr"));
+          // dùng getRawData để biết khi QR đã sẵn sàng
+          qr.getRawData("png").then((blob) => {
+            console.log("QR Code đã render xong!"); // ✅ Sự kiện complete            
+            $("#registerForm").hide();
+            $("#qrContainer div#qr").html('');
+            $("#qrContainer").show();
+          });
         }
         else{
           $('#lblError').text(res.message);
@@ -172,4 +175,5 @@ fileUpload.addEventListener('drop', (e) => {
     fileName.textContent = e.dataTransfer.files[0].name;
   }
 });
+
 
