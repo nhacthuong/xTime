@@ -8,7 +8,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url('./background.png');
+  background-image: url('./background.jpg');
   background-size: cover;      /* phóng to vừa màn hình */
   background-position: center; /* căn giữa */
   background-repeat: no-repeat;
