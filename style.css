@@ -71,7 +71,11 @@ input {
 
 input:not(input[type="radio"],input[type="email"]) {
   text-transform: uppercase;
-}  
+}
+
+input::placeholder {
+  text-transform: none;
+}
 
 input:not(input[type="radio"]) { 
   width: 100%; 
