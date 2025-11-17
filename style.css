@@ -67,8 +67,11 @@ input {
   transition: all 0.3s ease;
   font-family: "Bellota", system-ui;
   border-radius: 0 !important;
-  text-transform: uppercase;
 }
+
+input:not(input[type="radio"],input[type="email"]) {
+  text-transform: uppercase;
+}  
 
 input:not(input[type="radio"]) { 
   width: 100%; 
